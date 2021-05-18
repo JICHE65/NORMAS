@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Norma.Web.Models.NormaVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="col-md-5">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Listado de normas</a></li>
+        </ol>
+    </div>
+
+    <font color="blue" face="Book antiqua,arial">
+
+        <h1>NORMAS</h1>
+
+    </font>
+    
+    <p>
+        <a asp-action="Create">CREAR UNA NORMA</a>
+    </p>
+    <table id="tblData" class="table-info table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Clave)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Requisito.Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaPublicacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Activo)
+                </th>
+            </tr>
+        </thead>
+
+
+
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Clave, "Details", new { id = item.NormaID }, null /* html attributes */)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Requisito.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaPublicacion, "{0:dd/mm/yyyy}", new { @type = "date" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Activo)
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#tblData').DataTable({
+                dom: 'Bfrtip',
+                buttons: ['copy', 'excel', 'pdf'],
+                language: {
+                    url: "localisation/Spanish.json"
+                }
+            });
+        });</script>
+}

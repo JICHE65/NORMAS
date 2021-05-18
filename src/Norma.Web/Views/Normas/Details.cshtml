@@ -1,0 +1,67 @@
+﻿@model Norma.Web.Models.NormaVM
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="col-md-5">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Detalles de normas</a></li>
+        </ol>
+    </div>
+
+    <font color="blue" face="Book antiqua,arial">
+
+        <h1>DETALLES</h1>
+
+    </font>
+
+    <div>
+        <h4>NORMA</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NormaID)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.TextBoxFor(model => model.NormaID, new { @class = "col-md-8 from control", disabled = "disabled" })
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Clave)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.TextBoxFor(model => model.Clave, new { @class = "col-md-8 from control", disabled = "disabled" })
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.TextBoxFor(model => model.Descripcion, new { @class = "col-md-8 from control", disabled = "disabled" })
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FechaPublicacion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.TextBoxFor(model => model.FechaPublicacion, new { @class = "col-md-8 from control", disabled = "disabled" })
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Activo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Activo)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TipoRequisitoId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.TextBoxFor(model => model.Requisito.Descripcion, new { @class = "col-md-8 from control", disabled = "disabled" })
+            </dd>
+        </dl>
+    </div>
+    <div>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.NormaID }, new { @class = "btn btn-primary" }) |
+        @Html.ActionLink("Eliminar", "Delete", new { id = Model.NormaID }, new { @class = "btn btn-danger" }) |
+        <a asp-action="Index">Regresar a la Listat</a>
+    </div>
+</div>

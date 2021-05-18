@@ -1,0 +1,105 @@
+﻿@model Norma.Web.Models.NormaVM
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <div class="col-md-5">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Edición de normas</a></li>
+        </ol>
+    </div>
+
+    <font color="blue" face="Book antiqua,arial">
+        <h1>EDITAR</h1>
+    </font>
+
+        <h4>NORMA</h4>
+        <hr />
+        <div class="container">
+            <div class="form-group">
+                <div class="col-md-8">
+                    <form asp-action="Edit" class="form">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <input type="hidden" asp-for="NormaID" />
+
+                        <div class="form-inline">
+                            <label asp-for="Clave" class="control-label col-md-2"></label>
+                            <div class="col-md-6">
+                                <input asp-for="Clave" class="form-control" />
+                            </div>
+                            <span asp-validation-for="Clave" class="text-danger"></span>
+                        </div>
+
+                        <br />
+
+                        <div class="form-inline">
+                            <label asp-for="Descripcion" class="control-label col-md-2"></label>
+                            <div class="col-md-6">
+                                <input asp-for="Descripcion" class="form-control" />
+                            </div>
+                            <span asp-validation-for="Descripcion" class="text-danger"></span>
+                        </div>
+
+                        <br />
+
+                        <div class="form-inline">
+                            <label asp-for="FechaPublicacion" class="control-label col-md-2"></label>
+                            <div class="col-md-6">
+                                <input asp-for="FechaPublicacion" class="form-control" />
+                            </div>
+                            <span asp-validation-for="FechaPublicacion" class="text-danger"></span>
+                        </div>
+
+                        <br />
+
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="Activo" /> @Html.DisplayNameFor(model => model.Activo)
+                            </label>
+                        </div>
+
+                        <br />
+
+                        <div class="form-inline">
+                            <label asp-for="Requisito" class="control-label col-sm-2"> Requisito Actual </label>
+                            <div class="col-sm-6">
+                                @*  <dd class="col-sm-6>*@
+                                @Html.DisplayFor(model => model.Requisito.Descripcion)
+                                @*   </dd>*@
+
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="form-inline">
+                            <div class="col-sm-6">
+                                <select asp-for="TipoRequisitoId" class="form-control" asp-items="ViewBag.TipoRequisitoId">
+                                    <option value="TipoRequisitoId">-- Selecciona Tipo Requisito --</option>
+                                </select>
+                                <span asp-validation-for="TipoRequisitoId" class="text-danger"></span>
+
+                            </div>
+                            @*<input asp-for="TipoRequisitoId" class="form-control" />*@
+
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <input type="submit" value="Guardar" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div>
+                <a asp-action="Index">Regresar a la Lista</a>
+            </div>
+        </div>
+</div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
